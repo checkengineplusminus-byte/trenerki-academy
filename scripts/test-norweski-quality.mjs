@@ -51,7 +51,7 @@ assert(index.includes(label)&&index.includes('83 słowa'),'missing public catalo
 const reader=read('app/nauka.tsx');
 assert(reader.includes("slug==='norweski-na-budowie'&&!!lesson.material?.language_bridge?.words?.length"),'word bridge not connected');
 assert(reader.includes("slug==='norweski-na-budowie'&&!!lesson.material?.homework?.instructions"),'homework not connected');
-assert(reader.includes("await persistDraft(firstPending?.lesson_no??module,{...notes,[String(module)]:draft})"),'private note persistence not connected');
+assert(reader.includes("await persistDraft(firstPending?.lesson_no??module)"),'private note persistence not connected');
 assert(read('src/NorwegianWordBridge.tsx').includes('nb-NO'),'Norwegian audio locale missing');
 assert(read('src/NorwegianNotebook.tsx').includes('Zapisz zadanie domowe'),'homework save missing');
 console.log('✓ NORWESKI: 30 original lessons, all quizzes preserved, 83 cognate cards, 7 false friends, 30 curiosities, 30 homework exercises, 30 detailed grammars, 30 coherent dialogues, public count 30');

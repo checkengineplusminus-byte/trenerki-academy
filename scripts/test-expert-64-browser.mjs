@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // Synthetic test-only accounts, no contact with real users or user progress.
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -7,7 +8,7 @@ const lessons=JSON.parse(readFileSync(new URL('../content/expert-64-browser-fixt
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-000000000064',email:'expert-review-test@example.test',aud:'authenticated',role:'authenticated',email_confirmed_at:'2026-01-01T00:00:00Z',app_metadata:{},user_metadata:{}};
-const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 assert.equal(lessons.length,64);
 async function go(context,row,profile){
  const page=await context.newPage(),errors=[];
@@ -21,6 +22,7 @@ async function go(context,row,profile){
    }));
   },{user});
   await page.route(u=>u.origin===origin&&u.pathname==='/nauka',async route=>route.fulfill({response:await route.fetch({url:origin+'/nauka.html'})}));
+  const serveDraft=createDraftFixture();
   await page.route(u=>u.origin===api,async route=>{
    const req=route.request(),url=new URL(req.url()),table=url.pathname.split('/').at(-1);
    const respond=(value,status=200)=>route.fulfill({headers,status,contentType:'application/json',body:JSON.stringify(value)});
@@ -28,7 +30,7 @@ async function go(context,row,profile){
    if(url.pathname==='/auth/v1/user')return respond(user);
    if(table==='ta_enrollments')return respond([{id:'synthetic-review-enrollment'}]);
    if(table==='ta_lessons')return respond([row]);
-   if(table==='ta_drafts')return respond([]);
+   if(table==='ta_drafts')return serveDraft(route,headers);
    if(table==='ta_learning_progress')return respond(Array.from({length:row.lesson_no},(_,i)=>({lesson_no:i})));
    if(table==='ta_courses')return respond([{title_pl:row.title_pl,description_pl:'Praktyczny kurs'}]);
    if(table==='ta_learning_attempts')return respond([]);

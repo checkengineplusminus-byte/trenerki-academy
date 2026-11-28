@@ -3,6 +3,9 @@ import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {CourseNotes,courseNotesAdapter} from '../src/courseNotes.mjs';
+import CourseNoteStatus from '../src/CourseNoteStatus';
 // @ts-ignore — jednolita, testowana nawigacja starych i nowych odnośników.
 import {courseDestination} from '../src/accounting/course-entry.js';
 import KeyboardLesson,{type KeyboardShortcut} from '../src/KeyboardLesson';
@@ -115,6 +118,10 @@ export default function Learning(){
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
  [busy,setBusy]=useState(true),[reload,setReload]=useState(0),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ const noteStore=React.useRef<CourseNotes|null>(null);
+ const finishLock=React.useRef(false);
+ const [noteStatus,setNoteStatus]=useState<any>(null);
+ const noteSaving=!!noteStatus?.saving;
  useEffect(()=>{setCoachOpen(slug==='ai-bez-tajemnic');},[slug,module]);
  useEffect(()=>{
   if(slug==='excel-skroty'&&pendingExcelHomeworkRef.current&&introRead&&scrollToExcelHomework())
@@ -130,6 +137,9 @@ export default function Learning(){
  },[slug,module,items.length]);
 
  useEffect(()=>{let active=true;(async()=>{
+  noteStore.current?.dispose();noteStore.current=null;
+  finishLock.current=false;setSaving(false);
+  setNotes({});setNoteStatus(null);
   setBusy(true);setError('');setItems([]);setDone([]);setChecks({});setMsg('');setShowProgram(false);
   try{
    if(!slug)throw new Error('Wybierz kurs z listy.');
@@ -149,13 +159,19 @@ export default function Learning(){
    if(!en?.length)throw new Error('Nie masz obecnie dostępu do tego kursu. Wróć do swoich kursów.');
    const [lessons,draft,progress,details,attempts]=await Promise.all([
     supabase.from('ta_lessons').select('lesson_no,title_pl,material,updated_at').eq('course_slug',slug).order('lesson_no',{ascending:true}),
-    supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
+    supabase.from('ta_drafts').select('last_module,notes,updated_at').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
     supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle(),
     supabase.from('ta_learning_attempts').select('lesson_no,mode,correct').eq('user_id',u.id).eq('course_slug',slug)
    ]);
    if(lessons.error||draft.error||progress.error||details.error||attempts.error)throw lessons.error||draft.error||progress.error||details.error||attempts.error;
    const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
+   const store=new CourseNotes({userId:u.id,slug,storage:AsyncStorage,adapter:courseNotesAdapter(supabase,u.id,slug),onChange:(state:any)=>{
+    if(active){setNotes(state.notes);setNoteStatus(state);}
+   }});
+   await store.initialize(draft.data);
+   if(!active){store.dispose();return;}
+   noteStore.current=store;
    if(active){
     setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({slug,title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
     const passed:Record<number,Checks>={};
@@ -171,15 +187,25 @@ export default function Learning(){
      }else perLesson[k].incorrect++;
     }
     setReview(perLesson);setChecks(passed);
-    const state=draft.data?.notes||{};
-    setNotes(state.byLesson||{[String(draft.data?.last_module||0)]:String(state.text||'')});
     const next=all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all.at(-1)?.lesson_no??0;
     const requested=Number(lessonParam)-1;
     setModule(all.some(v=>v.lesson_no===requested)&&(requested<=next||completed.includes(requested))?requested:next);
    }
   }catch(e:any){if(active)setError(e?.message||'Nie udało się otworzyć kursu.');}
   finally{if(active)setBusy(false);}
- })();return()=>{active=false};},[slug,reload]);
+ })();return()=>{active=false;noteStore.current?.dispose();noteStore.current=null;};},[slug,reload]);
+ useEffect(()=>{
+  if(!userId)return;
+  const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
+   if(event==='SIGNED_OUT'){
+    noteStore.current?.dispose();noteStore.current=null;setNotes({});setItems([]);
+    router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});
+   }else if((event==='SIGNED_IN'||event==='TOKEN_REFRESHED')&&session?.user&&session.user.id!==userId){
+    noteStore.current?.dispose();noteStore.current=null;setNotes({});setItems([]);setReload(value=>value+1);
+   }
+  });
+  return()=>subscription.unsubscribe();
+ },[userId,slug]);
  const study=items[0]?.material.study_project;
  const lesson=items.find(x=>x.lesson_no===module),index=items.findIndex(x=>x.lesson_no===module);
  const learning=lesson?.material.learning;
@@ -230,7 +256,7 @@ export default function Learning(){
  const unlockedNo=firstPending?.lesson_no??Infinity;
  const canVisit=(number:number)=>number<=unlockedNo||done.includes(number);
  function startFromBeginning(){
-  if(saving||!items.length)return;
+  if(saving||noteSaving||!items.length)return;
   setReviewMode(true);setIntroRead(false);setCoachOpen(false);setShowProgram(false);
   setMsg('Powtórka od pierwszej lekcji. Zapisany postęp i otrzymany dyplom pozostają bez zmian.');
   setModule(items[0].lesson_no);
@@ -241,7 +267,7 @@ export default function Learning(){
   setModule(number);router.setParams({lesson:String(number+1)});scrollToTop();
  }
  function changeModule(number:number){
-  if(saving||!items.some(v=>v.lesson_no===number)||!canVisit(number))return;
+  if(saving||noteSaving||!items.some(v=>v.lesson_no===number)||!canVisit(number))return;
   setMsg('');openModule(number);
  }
  const passed=checks[module]||{};
@@ -263,24 +289,24 @@ export default function Learning(){
    (!carpentry||passed.carpentry)&&
    (!stageRequired||passed.stage)
  );
- async function persistDraft(target:number,noteState:NoteState){
-  if(!userId)return;
-  const {error:e}=await supabase.from('ta_drafts').upsert({
-   user_id:userId,course_slug:slug,last_module:target,notes:{byLesson:noteState},
-   updated_at:new Date().toISOString()
-  },{onConflict:'user_id,course_slug'});
-  if(e)throw e;
+ function changeNote(value:string){noteStore.current?.change(module,value);}
+ async function persistDraft(target:number){
+  const store=noteStore.current;
+  if(!userId||!store||store.userId!==userId||store.slug!==slug)throw new Error('Brak sesji ucznia');
+  await store.save(target);
  }
  async function finishLesson(){
-  if(saving||!userId||!lesson)return;
+  const notebook=noteStore.current;
+  if(finishLock.current||saving||!notebook||notebook.saving||!userId||!lesson)return;
   if(!canFinish){setMsg(requirementMessage);return;}
-  setSaving(true);setMsg('');
+  finishLock.current=true;setSaving(true);setMsg('');
   try{
    if(!done.includes(module)){
     // Server verifies objective attempts and chronological ordering.
     const {data:result,error:pe}=await supabase.functions.invoke<{ok?:boolean;completed?:boolean;error?:string}>('ta-lesson-guide',{
       body:{action:'complete',course_slug:slug,lesson_no:module,require_carpentry:carpentry}
     });
+    if(noteStore.current!==notebook)return;
     if(pe||!result?.completed){
       const msg=result?.error==='exercise_required'?'Zalicz wymagane zadanie, a potem spróbuj ponownie.':
        result?.error==='previous_lessons_required'?'Najpierw ukończ poprzednie lekcje.':
@@ -290,18 +316,20 @@ export default function Learning(){
     setDone(prev=>prev.includes(module)?prev:[...prev,module]);
    }
    const target=done.includes(module)&&firstPending&&(next===undefined||!canVisit(next))?unlockedNo:next??module;
-   try{await persistDraft(target,notes);}
-   catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
+   try{await persistDraft(target);}
+   catch{if(noteStore.current===notebook)setMsg('Lekcja ukończona. Zapis notatki nie powiódł się. Pozostajesz w tej lekcji — ponów zapis zadania albo przycisk Dalej.');return;}
+   if(noteStore.current!==notebook)return;
+   if(noteStore.current?.state.dirty){setMsg('Zapisano wysłaną wersję. Masz nowszy szkic — zapisz go przed przejściem dalej.');return;}
    if(target!==module){openModule(target);setMsg(prev=>prev||'Otworzono następną lekcję.');}
    else if(reviewMode){setReviewMode(false);router.setParams({review:'0'});setMsg('Powtórka ukończona. Możesz wrócić do dowolnej lekcji lub zobaczyć dyplom.');scrollToTop();}
    else {setMsg('Wszystkie lekcje ukończone. Egzamin jest poniżej ostatniej lekcji.');scrollToTop();}
-  }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
-  finally{setSaving(false);}
+  }catch(e:any){if(noteStore.current===notebook)setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
+  finally{if(noteStore.current===notebook){finishLock.current=false;setSaving(false);}}
  }
  function lessonNavigation(position:'top'|'bottom'){
   const hasNext=next!==undefined&&canVisit(next);
   return <View testID={'lesson-nav-'+position} style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginVertical:10}}>
-   <Pressable accessibilityRole="button" accessibilityLabel="Poprzednia lekcja" disabled={saving||previous===undefined}
+   <Pressable accessibilityRole="button" accessibilityLabel="Poprzednia lekcja" disabled={saving||noteSaving||previous===undefined}
     onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#EFF3F8',opacity:previous===undefined?0.48:1}}>
     <Text style={{color:ink,fontWeight:'800'}}>← Poprzednia lekcja</Text>
    </Pressable>
@@ -323,7 +351,7 @@ export default function Learning(){
     {items.map((item,i)=>{
      const current=item.lesson_no===module,locked=!canVisit(item.lesson_no);
      return <Pressable key={item.lesson_no} accessibilityRole="button" accessibilityState={{selected:current,disabled:locked||saving}}
-      disabled={saving||locked} onPress={()=>changeModule(item.lesson_no)}
+      disabled={saving||noteSaving||locked} onPress={()=>changeModule(item.lesson_no)}
       style={{minHeight:44,justifyContent:'center',padding:10,borderRadius:8,backgroundColor:current?'#F1CF8D':'#193950'}}>
       <Text style={{fontSize:13,lineHeight:19,color:current?'#14283B':locked?'#C4D0DA':'#FFFFFF',fontWeight:current?'800':'500'}}>{done.includes(item.lesson_no)?'✓ ':locked?'🔒 ':''}{i+1}. {item.title_pl}</Text>
      </Pressable>;
@@ -419,7 +447,7 @@ export default function Learning(){
    ]:[{name:'DOSTĘPNE LEKCJE',about:`${items.length} lekcji i ćwiczenia praktyczne`,list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#DCE4ED',borderRadius:13,padding:13,gap:9}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
      <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
-     <View style={{gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} accessibilityRole="button" accessibilityState={{selected:v.lesson_no===module,disabled:saving||!canVisit(v.lesson_no)}} disabled={saving||!canVisit(v.lesson_no)} onPress={()=>{setShowProgram(false);changeModule(v.lesson_no)}} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(!canVisit(v.lesson_no)?' — zablokowana':'')} style={{minHeight:44,justifyContent:'center',paddingVertical:10,paddingHorizontal:12,backgroundColor:v.lesson_no===module?ink:'#F4F7FA',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
+     <View style={{gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} accessibilityRole="button" accessibilityState={{selected:v.lesson_no===module,disabled:saving||!canVisit(v.lesson_no)}} disabled={saving||noteSaving||!canVisit(v.lesson_no)} onPress={()=>{setShowProgram(false);changeModule(v.lesson_no)}} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(!canVisit(v.lesson_no)?' — zablokowana':'')} style={{minHeight:44,justifyContent:'center',paddingVertical:10,paddingHorizontal:12,backgroundColor:v.lesson_no===module?ink:'#F4F7FA',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
       <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':!canVisit(v.lesson_no)?'#4A6176':ink,textAlign:'left'}}>{done.includes(v.lesson_no)?'✓ ':!canVisit(v.lesson_no)?'🔒 ':''}{v.lesson_no+1}. {v.title_pl}</Text>
      </Pressable>)}</View>
    </View>)}
@@ -504,6 +532,7 @@ export default function Learning(){
     <AdversarialLessonTest key={'redteam-'+slug+'-'+module+'-'+(lesson.updated_at??'')} courseSlug={slug} lessonNo={module}
      test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}
      onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>}
+   <CourseNoteStatus state={noteStatus} lesson={module} onResolve={remote=>noteStore.current?.resolve(module,remote)}/>
    {slug!=='ksiegowosc-od-podstaw'&&slug!=='norweski-na-budowie'&&slug!=='lepszy-cukiernik'&&!!lesson.material?.homework?.instructions&&
     <CourseLessonExtras
      key={'course-homework-'+slug+'-'+module}
@@ -512,11 +541,10 @@ export default function Learning(){
      tips={lesson.material.lesson_tips}
      homework={lesson.material.homework}
      value={notes[String(module)]||''}
-     onChange={draft=>setNotes(current=>({...current,[String(module)]:draft}))}
+     onChange={changeNote}
      onSave={async draft=>{
       if(!userId)throw new Error('Brak sesji ucznia');
-      await persistDraft(firstPending?.lesson_no??module,{...notes,[String(module)]:draft});
-      setNotes(current=>({...current,[String(module)]:draft}));
+      await persistDraft(firstPending?.lesson_no??module);
      }}
     />}
    {slug==='norweski-na-budowie'&&!!lesson.material?.language_bridge?.words?.length&&
@@ -527,11 +555,10 @@ export default function Learning(){
      lessonNo={module+1}
      task={lesson.material.homework}
      value={notes[String(module)]||''}
-     onChange={value=>setNotes(old=>({...old,[String(module)]:value}))}
+     onChange={changeNote}
      onSave={async draft=>{
       if(!userId)throw new Error('Brak sesji — zaloguj się ponownie.');
-      await persistDraft(firstPending?.lesson_no??module,{...notes,[String(module)]:draft});
-      setNotes(old=>({...old,[String(module)]:draft}));
+      await persistDraft(firstPending?.lesson_no??module);
      }}
     />}
    {slug==='lepszy-cukiernik'&&!!lesson.material?.homework?.instructions&&
@@ -540,8 +567,8 @@ export default function Learning(){
      lessonNo={module+1}
      task={lesson.material.homework}
      value={notes[String(module)]||''}
-     onChange={value=>setNotes(old=>({...old,[String(module)]:value}))}
-     onSave={async()=>{if(!userId)throw new Error('Brak sesji — zaloguj się ponownie.');await persistDraft(firstPending?.lesson_no??module,notes);}}
+     onChange={changeNote}
+     onSave={async()=>{if(!userId)throw new Error('Brak sesji — zaloguj się ponownie.');await persistDraft(firstPending?.lesson_no??module);}}
     />}
    {slug==='excel-skroty'&&[9,15,17,18,20,25,26,29].includes(module)&&<ExcelVisualPractices key={'excel-visual-'+module} lessonNo={module}/>}
    {slug==='autocad-skroty'&&<AutoCADPracticeFiles lessonNo={module}/>}
@@ -602,7 +629,7 @@ export default function Learning(){
    {coachOpen&&<View onLayout={event=>{coachYRef.current=event.nativeEvent.layout.y}}>
      <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module} coachTask={lesson.material?.anielka} homeworkDraft={notes[String(module)]||''}/>
    </View>}
-   <Pressable accessibilityRole="button" disabled={saving}
+   <Pressable testID="lesson-finish" accessibilityRole="button" disabled={saving||noteSaving}
     onPress={()=>{if(canFinish)void finishLesson();else if(carpentry&&(!objective||passed[objective])&&!passed.carpentry)openCarpentry();else returnToExercise()}}
     style={{backgroundColor:canFinish?ink:'#E4EAF1',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
     <Text style={{color:canFinish?'white':ink,fontWeight:'900',textAlign:'center',fontSize:17,lineHeight:25}}>

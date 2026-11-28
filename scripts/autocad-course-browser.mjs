@@ -1,3 +1,4 @@
+import {createDraftFixture} from './draft-fixture.mjs';
 // Full 30-lesson UI regression on the reviewed curriculum and isolated API fixtures.
 // This does not claim a production enrollment/exam or a test inside Autodesk software.
 import assert from 'node:assert/strict';
@@ -18,11 +19,12 @@ for(const mobile of [false,true]){
  const page=await ctx.newPage();page.setDefaultTimeout(12000);
  const completed=[],attempts=[],errors=[];let examStep=0,examStarted=false;
  page.on('pageerror',e=>errors.push(e.message));
- const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+ const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
  await page.addInitScript(({user})=>localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({access_token:'test-access-token',refresh_token:'test-refresh-token',expires_at:Math.floor(Date.now()/1000)+3600,expires_in:3600,token_type:'bearer',user})),{user});
  await page.route(url=>url.origin===origin&&['/nauka','/dyplom'].includes(url.pathname),async route=>{
   const response=await route.fetch({url:origin+new URL(route.request().url()).pathname+'.html'});await route.fulfill({response});
  });
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===api,async route=>{
   const req=route.request(),path=new URL(req.url()).pathname,table=path.split('/').at(-1);
   const json=(data,status=200)=>route.fulfill({status,headers,contentType:'application/json',body:JSON.stringify(data)});
@@ -34,7 +36,7 @@ for(const mobile of [false,true]){
   if(table==='ta_learning_progress')return json(completed.map(lesson_no=>({lesson_no})));
   if(table==='ta_learning_attempts')return json(attempts);
   if(table==='ta_certificates')return json([{id:'fixture',certificate_no:'WZOR-TESTOWY',holder_name:'Test AutoCAD',title_pl:'AutoCAD',title_en:'AutoCAD',issued_at:'2026-11-15',is_demo:true}]);
-  if(table==='ta_drafts')return req.method()==='POST'?json({},201):json([]);
+  if(table==='ta_drafts')return serveDraft(route,headers);
   if(table==='ta-lesson-guide'){
    const body=req.postDataJSON(),material=lessons[body.lesson_no]?.material;
    if(body.action==='attempt'){

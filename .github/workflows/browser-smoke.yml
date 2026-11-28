@@ -22,6 +22,9 @@ on:
       - 'public/sitemap.xml'
       - 'public/robots.txt'
       - 'scripts/learning-browser.mjs'
+      - 'scripts/draft-fixture.mjs'
+      - 'scripts/course-notes-browser.mjs'
+      - 'scripts/test-course-notes.mjs'
       - 'scripts/autocad-course-browser.mjs'
       - 'scripts/test-autocad-full-manual-v3.mjs'
       - 'content/autocad-complete-lessons-v3.json'
@@ -87,6 +90,7 @@ jobs:
           node scripts/gift-card-ui-state.test.mjs
           node --test scripts/test-account-feedback.mjs
           node --test scripts/test-auth-redirect.mjs
+          node --test scripts/test-course-notes.mjs
           node --experimental-default-type=module --test scripts/test-course-progress.mjs
           node --test scripts/test-exam-readiness.mjs
           node --test scripts/test-accounting-final-exam.mjs
@@ -111,6 +115,7 @@ jobs:
           node scripts/accounting-exam-browser.mjs http://127.0.0.1:8787
           node scripts/account-entry-browser.mjs http://127.0.0.1:8787
           node scripts/account-recovery-browser.mjs http://127.0.0.1:8787
+          node scripts/course-notes-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection
         if: always()
         uses: actions/upload-artifact@v4

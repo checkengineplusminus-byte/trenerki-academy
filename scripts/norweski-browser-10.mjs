@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // Real browser quality audit. Synthetic authenticated learner — never modifies real students.
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -7,7 +8,7 @@ const all=JSON.parse(readFileSync(new URL('../content/norweski-budowa-full-20261
 const lessons=all.lessons,origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 const apiOrigin='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-000000000081',email:'norsk-study@example.test',aud:'authenticated',role:'authenticated',email_confirmed_at:'2026-01-01T00:00:00Z',app_metadata:{},user_metadata:{}};
-const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const profiles=[
  ['chromium','desktop-large',1440,900,false],['chromium','desktop-small',1280,720,false],
  ['chromium','tablet-landscape',1024,768,false],['chromium','android',412,915,true],
@@ -29,7 +30,7 @@ async function setup(page,number){
   await route.fulfill({response});
  });
  const completed=Array.from({length:number},(_,i)=>({lesson_no:i})),attempts=[];
- let draft=null;
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===apiOrigin,async route=>{
   const req=route.request(),u=new URL(req.url()),table=u.pathname.split('/').at(-1);
   const respond=(value,status=200)=>route.fulfill({headers,status,contentType:'application/json',body:JSON.stringify(value)});
@@ -37,10 +38,7 @@ async function setup(page,number){
   if(u.pathname==='/auth/v1/user')return respond(user);
   if(table==='ta_enrollments')return respond([{id:'synthetic-enrollment'}]);
   if(table==='ta_lessons')return respond(lessons);
-  if(table==='ta_drafts'){
-   if(req.method()==='POST'){draft=req.postDataJSON();return respond([] ,201);}
-   return respond(draft?[draft]:[]);
-  }
+  if(table==='ta_drafts')return serveDraft(route,headers);
   if(table==='ta_learning_progress')return respond(completed);
   if(table==='ta_courses')return respond([{title_pl:all.course_title,description_pl:'Praktyczny norweski na budowie'}]);
   if(table==='ta_learning_attempts')return respond(attempts);

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // Browser checks use a synthetic account + intercepted Supabase REST. No learner writes.
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -7,7 +8,7 @@ const rows=JSON.parse(readFileSync(new URL('../content/expert-64-redteam-fixture
 assert.equal(rows.length,64);
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin,api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-000000000093',email:'adversarial-check@example.test',aud:'authenticated',role:'authenticated',email_confirmed_at:'2026-01-01T00:00:00Z',app_metadata:{},user_metadata:{}};
-const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const mode=process.env.TRENERKI_REDTEAM_MODE||'all';
 const profiles=mode==='all'?[['chromium','desktop',1365,840,false],['chromium','phone',390,844,true]]:
 [['firefox','desktop',1366,768,false],['webkit','iphone',393,852,true]];
@@ -31,6 +32,7 @@ async function check(ctx,row,label,representative){
   await page.route(url=>url.origin===origin&&url.pathname==='/nauka',async route=>{
    const response=await route.fetch({url:origin+'/nauka.html'});await route.fulfill({response});
   });
+  const serveDraft=createDraftFixture();
   await page.route(url=>url.origin===api,async route=>{
    const request=route.request(),url=new URL(request.url()),tbl=url.pathname.split('/').at(-1);
    const respond=(value,status=200)=>route.fulfill({headers,status,contentType:'application/json',body:JSON.stringify(value)});
@@ -38,7 +40,7 @@ async function check(ctx,row,label,representative){
    if(url.pathname==='/auth/v1/user')return respond(user);
    if(tbl==='ta_enrollments')return respond([{id:'synthetic-enrollment'}]);
    if(tbl==='ta_lessons')return respond([row]);
-   if(tbl==='ta_drafts')return respond([]);
+   if(tbl==='ta_drafts')return serveDraft(route,headers);
    if(tbl==='ta_learning_progress')return respond(Array.from({length:row.lesson_no},(_,i)=>({lesson_no:i})));
    if(tbl==='ta_courses')return respond([{title_pl:row.title_pl,description_pl:'Materiały treningowe'}]);
    if(tbl==='ta_learning_attempts'){if(request.method()!=='GET')attemptedWrites++;return respond([]);}

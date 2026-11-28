@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // Two sequential independent QA rounds, eight role/device environments per round.
 // Synthetic account and intercepted API only: never write to a learner's account.
 import assert from 'node:assert/strict';
@@ -8,7 +9,7 @@ const origin=new URL(process.argv[2]||'http://127.0.0.1:8794').origin;
 const apiOrigin='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const missions=JSON.parse(readFileSync(new URL('../content/windows-practice-missions.json',import.meta.url),'utf8')).lessons;
 const user={id:'00000000-0000-4000-a000-000000000008',email:'qa-windows@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}};
-const cors={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const cors={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const profiles=[
  {id:'student',title:'Student',lesson:0,width:390,height:844,mobile:true,touch:true,scale:2},
  {id:'senior',title:'Senior uczący się Windows',lesson:27,width:360,height:740,mobile:true,touch:true,scale:2,reduce:true},
@@ -37,6 +38,7 @@ async function setupMock(page,events,fresh=false){
   const response=await route.fetch({url:origin+'/nauka.html'});
   await route.fulfill({response});
  });
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===apiOrigin,async route=>{
   const req=route.request(),url=new URL(req.url()),table=url.pathname.split('/').at(-1);
   const fulfill=(body,status=200)=>route.fulfill({headers:cors,status,contentType:'application/json',body:JSON.stringify(body)});
@@ -45,7 +47,7 @@ async function setupMock(page,events,fresh=false){
   if(table==='ta_enrollments')return fulfill([{id:'qa-enrollment'}]);
   if(table==='ta_courses')return fulfill([{title_pl:'Windows 11 — kurs QA',description_pl:'Ćwiczenia Windows 11 od zera'}]);
   if(table==='ta_lessons')return fulfill(missions.map(m=>({lesson_no:m.lesson_no,title_pl:'Lekcja QA '+(m.lesson_no+1),material:materialFor(m.lesson_no)})));
-  if(table==='ta_drafts')return fulfill([]);
+  if(table==='ta_drafts')return serveDraft(route,cors);
   // Unlock individual mission pages without granting access to protected backend.
   if(table==='ta_learning_progress')return fulfill(fresh?[]:Array.from({length:29},(_,lesson_no)=>({lesson_no})));
   if(table==='ta_learning_attempts')return fulfill([]);

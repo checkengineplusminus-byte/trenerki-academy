@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // Real browser rendering of 73 production lessons with new original SVG diagrams.
 // Protected user context is synthetic; the app is not allowed to touch customer data.
 import assert from 'node:assert/strict';
@@ -8,7 +9,7 @@ const lessons=JSON.parse(readFileSync(new URL('../content/lesson-original-art-ui
 const base=new URL(process.argv[2]||'http://127.0.0.1:8787').origin,api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 assert.equal(lessons.length,73);
 const user={id:'00000000-0000-4000-a000-000000000041',email:'image-test@example.test',aud:'authenticated',role:'authenticated',email_confirmed_at:'2026-01-01T00:00:00Z',app_metadata:{},user_metadata:{}};
-const headers={'access-control-allow-origin':base,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const headers={'access-control-allow-origin':base,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 async function check(context,row,label){
  const page=await context.newPage(),errors=[];
  page.on('pageerror',err=>errors.push(err.message));
@@ -23,6 +24,7 @@ async function check(context,row,label){
   await page.route(url=>url.origin===base&&url.pathname==='/nauka',async route=>{
    await route.fulfill({response:await route.fetch({url:base+'/nauka.html'})});
   });
+  const serveDraft=createDraftFixture();
   await page.route(url=>url.origin===api,async route=>{
    const req=route.request(),u=new URL(req.url()),table=u.pathname.split('/').at(-1);
    const respond=(value,status=200)=>route.fulfill({headers,status,contentType:'application/json',body:JSON.stringify(value)});
@@ -31,7 +33,7 @@ async function check(context,row,label){
    if(table==='ta_enrollments')return respond([{id:'synthetic-enrollment'}]);
    if(table==='ta_lessons')return respond(Array.from({length:Math.max(30,row.lesson_no+1)},(_,i)=>
     i===row.lesson_no?row:{lesson_no:i,title_pl:'Lekcja poprzednia '+(i+1),material:{...row.material,illustration:undefined}}));
-   if(table==='ta_drafts')return respond([]);
+   if(table==='ta_drafts')return serveDraft(route,headers);
    if(table==='ta_learning_progress')return respond(Array.from({length:row.lesson_no},(_,i)=>({lesson_no:i})));
    if(table==='ta_courses')return respond([{title_pl:row.title_pl,description_pl:'Kurs praktyczny'}]);
    if(table==='ta_learning_attempts')return respond([]);

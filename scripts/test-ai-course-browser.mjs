@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 /**
  * Synthetic authenticated learner for the 32-lesson AI Academy.
  * Isolated API stubs: NEVER touches real accounts, payments, production lessons or grades.
@@ -9,7 +10,7 @@ import {chromium,firefox,webkit} from 'playwright';
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8791').origin;
 const apiOrigin='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-00000000a151',email:'ai-learner@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{full_name:'Tester Kursu'}};
-const cors={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const cors={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const mkLesson=(n)=>{
  const stage=n%4===3;
  const test={question:'Sprawdź źródło dowodu dla etapu '+(n+1),options:['Nie sprawdzaj','Sprawdź źródło','Zgadywanie','Kopiuj'],correct:1,feedback:['Nie','Tak','Nie','Nie'],evidence:'Porównaj z oryginałem',root_cause:'Brak weryfikacji'};
@@ -46,6 +47,7 @@ async function run(env){
     const response=await route.fetch({url:origin+'/nauka.html'});
     await route.fulfill({response});
   });
+  const serveDraft=createDraftFixture();
   await page.route(url=>url.origin===apiOrigin,async route=>{
     const req=route.request(),u=new URL(req.url()),method=req.method(),table=u.pathname.split('/').at(-1);
     const json=(obj,status=200)=>route.fulfill({status,headers:cors,contentType:'application/json',body:JSON.stringify(obj)});
@@ -53,7 +55,7 @@ async function run(env){
     if(u.pathname==='/auth/v1/user')return json(user);
     if(table==='ta_enrollments')return json([{id:'synthetic-enrollment',status:'active'}]);
     if(table==='ta_lessons')return json(lessons);
-    if(table==='ta_drafts')return method==='POST'?json({},201):json([]);
+    if(table==='ta_drafts')return serveDraft(route,cors);
     if(table==='ta_learning_progress')return json(completed.map(lesson_no=>({lesson_no})));
     if(table==='ta_learning_attempts')return json([]);
     if(table==='ta_courses')return json([{title_pl:'AI bez tajemnic',description_pl:'32 lekcje praktyki'}]);
